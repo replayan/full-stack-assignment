@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="signup-container">
+      <h1 class="signup-heading">Create an Account</h1>
+      <div class="signup-tabs">
+        <button class="tab active" onclick="switchTab('user')">User</button>
+        <button class="tab" onclick="switchTab('admin')">Admin</button>
+      </div>
+      <form class="signup-form user-form" method="POST" action="/signup">
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter Your Username"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Your Email"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <i class="fa fa-key"></i>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Your Password"
+            required
+          />
+        </div>
+        <button type="submit" class="signup-btn">Sign Up</button>
+      </form>
+      <form
+        class="signup-form admin-form"
+        style="display: none"
+        method="POST"
+        action="/signup"
+      >
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input
+            type="text"
+            name="adminname"
+            placeholder="Enter Your Admin Username"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input
+            type="email"
+            name="adminemail"
+            placeholder="Enter Your Admin Email"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <i class="fa fa-key"></i>
+          <input
+            type="password"
+            name="adminpassword"
+            placeholder="Enter Your Admin Password"
+            required
+          />
+        </div>
+        <button type="submit" class="signup-btn">Sign Up as Admin</button>
+      </form>
+      <p class="already-member">
+        Already a member? <a href="login.html">Log In</a>
+      </p>
+    </div>
+
+    <script>
+      function switchTab(tabType) {
+        const userForm = document.querySelector(".user-form");
+        const adminForm = document.querySelector(".admin-form");
+        const userTab = document.querySelector(".tab:nth-child(1)");
+        const adminTab = document.querySelector(".tab:nth-child(2)");
+
+        if (tabType === "user") {
+          userForm.style.display = "block";
+          adminForm.style.display = "none";
+          userTab.classList.add("active");
+          adminTab.classList.remove("active");
+        } else if (tabType === "admin") {
+          userForm.style.display = "none";
+          adminForm.style.display = "block";
+          userTab.classList.remove("active");
+          adminTab.classList.add("active");
+        }
+      }
+    </script>
+  </body>
+</html>
